@@ -1,0 +1,15 @@
+---
+- name: "Work with Active Directory"
+  hosts: domain_server
+  tasks:
+    - name: "Create a user"
+      community.windows.win_domain_user:
+           firstname: "Win"
+           surname: "Test"
+           name: "WinTest"
+           upn: "wintest@ask.local"
+           state: present
+           password: "User1Password"
+           path: "ou=General Users,ou=Corporate,dc=ask, dc=local"
+           attributes:
+             displayName: "Win Test"
